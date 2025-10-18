@@ -2,6 +2,7 @@ import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 import numpy as np
 from PIL import Image
+from src.utils import preprocess_canvas_image
 
 st.set_page_config(page_title="MNIST Draw & Predict", page_icon="✏️")
 st.title("Dessinez un chiffre manuscrit (0-9)")
@@ -17,6 +18,7 @@ canvas_result = st_canvas(
     key="canvas",
 )
 
-if st.button("Voir l'image du canvas") and canvas_result.image_data is not None:
+if st.button("Prédire") and canvas_result.image_data is not None:
     img = Image.fromarray((canvas_result.image_data[:, :, 0] * 255).astype(np.uint8))
     st.image(img, caption="Votre dessin", width=140)
+    tensor_img = preprocess_canvas_image(canvas_result.image_data)
