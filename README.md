@@ -12,5 +12,12 @@ Si vous voulez tester ce projet faites ceci :
 ### 1 - Clonage
 
 ```bash
-git clone 
+git clone https://github.com/bryanTRX/mnist_projet.git
+cd mnist_projet
+```
+
+### 2 - Installation des dépendances
+
+```bash
+pip install -r requirements.txt
 ```
