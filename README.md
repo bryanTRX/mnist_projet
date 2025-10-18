@@ -21,3 +21,9 @@ cd mnist_projet
 ```bash
 pip install -r requirements.txt
 ```
+
+### 3 - Pour rouler la page web
+
+```bash
+python -m streamlit run test.py
+```
