@@ -5,7 +5,7 @@ from tqdm import tqdm
 from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter 
 
-def train(model: nn.Module, train_loader: DataLoader, epochs: int = 10, lr: float = 0.001, device: str = "cpu"):
+def train(model: nn.Module, train_loader: DataLoader, epochs: int = 20, lr: float = 0.001, device: str = "cpu"):
     model.to(device)
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=lr)
@@ -19,9 +19,6 @@ def train(model: nn.Module, train_loader: DataLoader, epochs: int = 10, lr: floa
         running_loss = 0.0
         correct = 0
         total = 0
-        for images, labels in train_loader:
-            print(images.shape)
-            break
 
         for images, labels in tqdm(train_loader, desc=f"Epoch {epoch+1}/{epochs}"):
             images, labels = images.to(device), labels.to(device)
@@ -53,7 +50,7 @@ if __name__ == "__main__":
     import os
 
     batch_size = 64
-    epochs = 10
+    epochs = 20
     lr = 0.001
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -62,7 +59,7 @@ if __name__ == "__main__":
     transforms.Resize((28, 28)),
     transforms.ToTensor()
     ])
-    train_dataset = datasets.ImageFolder(root="data/train", transform=transform)
+    train_dataset = datasets.ImageFolder(root="data/train_test", transform=transform)
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 
     model = MNISTModel()

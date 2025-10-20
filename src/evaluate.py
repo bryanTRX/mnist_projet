@@ -55,7 +55,9 @@ def evaluate(model_path: str = "models/mnist_cnn.pth", data_path: str = "data/te
     plt.xlabel("Prédiction")
     plt.ylabel("Vérité terrain")
     plt.title("Matrice de confusion - MNIST CNN")
-    plt.show()
+    plt.show(block=False)
+    plt.savefig("results.png")
+    plt.close()
 
     print("\nRapport de classification :")
     print(classification_report(all_labels, all_preds, digits=4))
