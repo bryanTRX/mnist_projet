@@ -6,7 +6,10 @@ from sklearn.metrics import confusion_matrix, classification_report
 from tqdm import tqdm
 import seaborn as sns
 import matplotlib.pyplot as plt
-from src.model import MNISTModel
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
+from model import MNISTModel
 
 def evaluate(model_path: str = "models/mnist_cnn.pth", data_path: str = "data/test", batch_size: int = 64, device: str = "cpu"):
     model = MNISTModel()

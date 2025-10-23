@@ -1,5 +1,8 @@
 import torch
-from src.model import MNISTModel
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
+from model import MNISTModel
 import torch.nn.functional as F
 
 # Charger le modèle une seule fois au lancement du module
