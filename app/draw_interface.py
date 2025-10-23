@@ -3,8 +3,12 @@ from streamlit_drawable_canvas import st_canvas
 import numpy as np
 import pandas as pd
 from PIL import Image
-from src.utils import preprocess_canvas_image, get_preprocessed_pil
-from src.predict import predict
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
+
+from utils import preprocess_canvas_image, get_preprocessed_pil
+from predict import predict
 import time
 
 st.set_page_config(
