@@ -13,3 +13,4 @@ scipy==1.14.1
 torchsummary
 torchviz
 tensorboard
+flask
