@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import CanvasDrawComponent from "./components/canvas";
 import PredictionResult from "./components/prediction";
 import { predictDigit } from "./services/api";
+import "./styles.css";
 
 function App() {
-  const [canvasImage, setCanvasImage] = useState(null);
+  const [canvasBlob, setCanvasBlob] = useState(null);
   const [resetCanvas, setResetCanvas] = useState(false);
   const [predictionData, setPredictionData] = useState({
     prediction: null,
@@ -12,25 +13,23 @@ function App() {
     probabilities: null,
     image: null,
   });
+
   const [loading, setLoading] = useState(false);
 
   const handlePredict = async () => {
-    if (!canvasImage) {
+    if (!canvasBlob) {
       alert("Dessinez un chiffre avant de lancer la prédiction.");
       return;
     }
 
-    const res = await fetch(canvasImage);
-    const blob = await res.blob();
-
     setLoading(true);
     try {
-      const result = await predictDigit(blob);
+      const result = await predictDigit(canvasBlob);
       setPredictionData({
         prediction: result.prediction,
         confidence: result.confidence,
         probabilities: result.probabilities,
-        image: canvasImage,
+        image: URL.createObjectURL(canvasBlob),
       });
     } catch (err) {
       alert("Erreur lors de l'appel API : " + err.message);
@@ -40,16 +39,18 @@ function App() {
   };
 
   return (
-    <div style={{ display: "flex", gap: "2rem", padding: "2rem" }}>
-      <div>
-        <h2>Dessinez ici</h2>
-        <button onClick={() => setResetCanvas(!resetCanvas)}>Effacer le canvas</button>
-        <CanvasDrawComponent onChange={setCanvasImage} resetSignal={resetCanvas} />
-        <button onClick={handlePredict} disabled={loading}>
-          {loading ? "Prédiction..." : "Lancer la Prédiction"}
-        </button>
+    <div className="app-container">
+      <div className="canvas-section">
+        <h2>Dessinez un chiffre</h2>
+        <CanvasDrawComponent onChange={setCanvasBlob} resetSignal={resetCanvas} />
+        <div className="buttons">
+          <button onClick={() => setResetCanvas(!resetCanvas)}>Effacer</button>
+          <button onClick={handlePredict} disabled={loading}>
+            {loading ? "Prédiction..." : "Lancer la prédiction"}
+          </button>
+        </div>
       </div>
-      <div>
+      <div className="result-section">
         <PredictionResult {...predictionData} />
       </div>
     </div>

@@ -1,0 +1,12 @@
+.canvas-container {
+  border: 2px solid #1e90ff;
+  border-radius: 12px;
+  width: 280px;
+  height: 280px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.canvas {
+  touch-action: none;
+}

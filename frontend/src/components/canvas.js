@@ -12,19 +12,21 @@ const CanvasDrawComponent = ({ onChange, resetSignal }) => {
 
   const handleEnd = () => {
     if (sigCanvas.current) {
-      const canvas = sigCanvas.current.getCanvas(); 
+      const canvas = sigCanvas.current.getCanvas();
       canvas.toBlob((blob) => {
-        onChange(blob);
+        if (blob) onChange(blob);
       }, "image/png");
     }
   };
 
   return (
-    <div style={{ border: "1px solid black", width: 280, height: 280 }}>
+    <div className="canvas-container">
       <SignatureCanvas
         penColor="white"
         backgroundColor="black"
-        canvasProps={{ width: 280, height: 280 }}
+        minWidth={12}
+        maxWidth={16}
+        canvasProps={{ width: 280, height: 280, className: "canvas" }}
         ref={sigCanvas}
         onEnd={handleEnd}
       />
