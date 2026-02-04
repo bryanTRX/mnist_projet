@@ -1,0 +1,22 @@
+# Ignorer les fichiers inutiles pour le build
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignorer les fichiers de log
+*.log
+
+# Ignorer les dossiers de tests ou data volumineux
+tests/
+data/
+notebooks/
+tmp/
+
+# Ignorer les fichiers git
+.git
+.gitignore
+
+# Ignorer Dockerfile et docker-compose (optionnel)
+dockerfile
+docker-compose.yml
