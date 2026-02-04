@@ -1,4 +1,5 @@
 # Projet MNIST – Reconnaissance de Chiffres Manuscrits
+
 ![Python](https://img.shields.io/badge/Python-3.12-blue)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.30-orange)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.1-red)
@@ -37,18 +38,19 @@ git clone https://github.com/bryanTRX/mnist_projet.git
 cd mnist_projet
 ```
 
-### 2 - Installation des dépendances
+### 2 - Construire les conteneurs
 
 ```bash
-pip install -r requirements.txt
+docker-compose up --build -d
 ```
 
-L’application sera accessible à l’adresse suivante : http://localhost:8501
-
-### 3 - Pour rouler la page web
+### 3 - Vérifier que les conteneurs tournent
 
 ```bash
-python -m streamlit run app/draw_interface.py
+docker ps
 ```
 
-Ce projet est sous licence MIT. Voir le fichier LICENSE 
+Backend  : http://localhost:5000
+Frontend : http://localhost:3000
+
+Ce projet est sous licence MIT. Voir le fichier LICENSE
