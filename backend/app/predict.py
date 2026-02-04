@@ -2,7 +2,7 @@ import torch
 import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
-from model import MNISTModel
+from .model import MNISTModel
 import torch.nn.functional as F
 
 # Charger le modèle une seule fois au lancement du module
@@ -14,7 +14,7 @@ model.load_state_dict(torch.load(model_path, map_location=device))
 model.to(device)
 model.eval()
 
-def predict(tensor_img):
+def predict(tensor_img: torch.Tensor):
     with torch.no_grad():
         tensor_img = tensor_img.to(device)
         output = model(tensor_img)

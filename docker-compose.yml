@@ -1,0 +1,14 @@
+services:
+  backend:
+    build: ./backend
+    container_name: mnist_backend
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build: ./frontend
+    container_name: mnist_frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend

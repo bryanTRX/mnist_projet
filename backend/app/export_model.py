@@ -1,5 +1,5 @@
 import torch
-from src.model import MNISTModel
+from app.model import MNISTModel
 
 model = MNISTModel()
 model.load_state_dict(torch.load("models/mnist_cnn.pth", map_location="cpu"))

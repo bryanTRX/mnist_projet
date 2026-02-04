@@ -1,0 +1,45 @@
+.app-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+}
+
+.canvas-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.buttons button {
+  padding: 0.6rem 1.2rem;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  background-color: #1E90FF;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.buttons button:hover:not(:disabled) {
+  background-color: #104E8B;
+}
+
+.buttons button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.result-section {
+  min-width: 320px;
+  max-width: 400px;
+}

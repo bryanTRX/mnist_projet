@@ -45,7 +45,7 @@ def train(model: nn.Module, train_loader: DataLoader, epochs: int = 20, lr: floa
 if __name__ == "__main__":
     from torchvision import datasets, transforms
     from torch.utils.data import DataLoader
-    from src.model import MNISTModel
+    from app.model import MNISTModel
     from torchsummary import summary
     import os
 
